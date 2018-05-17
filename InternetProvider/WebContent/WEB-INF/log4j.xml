@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="debug" name="XMLConfigTest" packages="org.apache.logging.log4j.test">
+	<Properties>
+		<property name="console_pattern">
+			"%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n"
+		</property>
+		<property name="file_pattern">
+			"%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level%logger{5} - %msg%n"
+		</property>
+	<Property name="logs">
+		 ${log4j:configParentLocation}\logs
+	</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${console_pattern}" />
+		</Console>
+		<RollingFile name="LogFile" fileName="${logs}\log.log"
+			append="true" filePattern="${logs}\${date:yyyy-MM-dd}/%d{yyyy-MM-dd HH-mm}_%i.log">
+			<PatternLayout pattern="${file_pattern}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="20 KB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="Console" level="info" />
+			<AppenderRef ref="LogFile" level="info" />
+		</Root>
+	</Loggers>
+</Configuration>

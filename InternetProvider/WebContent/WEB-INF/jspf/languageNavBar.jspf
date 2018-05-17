@@ -1,0 +1,23 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:message bundle="${loc}" key="local.locButton.name.ru" var="ru_button" />
+<fmt:message bundle="${loc}" key="local.locButton.name.en" var="en_button" />
+<fmt:message bundle="${loc}" key="local.language" var="language" />
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Flash telecom</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ${language}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="FrontController?command=change_localization&local=ru">${ru_button}</a>
+          <a class="dropdown-item" href="FrontController?command=change_localization&local=en">${en_button}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

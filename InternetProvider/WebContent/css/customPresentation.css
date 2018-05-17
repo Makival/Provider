@@ -1,0 +1,22 @@
+.div-cell {
+	border-radius: 10px;
+}
+
+.vbottom {
+	position: relative;
+	top: 2.5em
+}
+
+.userName {
+	position: absolute;
+	right: 10px;
+}
+
+td.promo {
+	color: #ff9933;
+}
+
+.invisible {
+	style ="display: none";
+	border: none;
+}

@@ -1,0 +1,77 @@
+
+<form action="FrontController" id="getSpListForm" method="post">
+	<div class="form-row">
+		<div class="form-group col-md-4">
+			<div>
+				<label for="servicePlanName" class="col-form-label">${service_plan}</label>
+			</div>
+			<div id="servicePlanName" class="form-row">
+				<input type="text" pattern="([A-Za-z0-9-_\s]{0,50})"
+					oninvalid="this.setCustomValidity('${sp_fill_message}')"
+					oninput="setCustomValidity('')" class="form-control" name="nameCriteria"
+					id="nameCriteria" value="${requestScope.nameCriteria}" />
+			</div>
+		</div>
+
+		<div class="form-group col-md-3">
+			<div>
+				<label for="accessCostGroup" class="col-form-label">${access_cost}</label>
+			</div>
+			<div id="accessCostGroup" class="form-row">
+				<div class="col-md-6">
+					<input type="text" pattern="([0-9]{0,8})(\.[0-9]{1,2})?$"
+						oninvalid="this.setCustomValidity('${access_cost_fill_message}')"
+						oninput="setCustomValidity('')" class="form-control"
+						name="accessCostCriteriaMin" placeholder="${min_value}"
+						id="accessCostCriteriaMin" value="${requestScope.accessCostCriteriaMin}" />
+				</div>
+				<div class="col-md-6">
+					<input type="text" pattern="([0-9]{0,8})(\.[0-9]{1,2})?$"
+						oninvalid="this.setCustomValidity('${access_cost_fill_message}')"
+						oninput="setCustomValidity('')" class="form-control"
+						name="accessCostCriteriaMax" placeholder="${max_value}"
+						id="accessCostCriteriaMax" value="${requestScope.accessCostCriteriaMax}" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group col-md-3">
+			<div>
+				<label for="monthlyFeeGroup" class="col-form-label">${monthly_fee}</label>
+			</div>
+			<div id="monthlyFeeGroup" class="form-row">
+				<div class="col-md-6">
+					<input type="text" pattern="([1-9]{1}[0-9]{0,7})(\.[0-9]{1,2})?$"
+						oninvalid="this.setCustomValidity('${fee_fill_message}')"
+						oninput="setCustomValidity('')" class="form-control"
+						name="monthlyFeeCriteriaMin" placeholder="${min_value}"
+						id="monthlyFeeCriteriaMin" value="${requestScope.monthlyFeeCriteriaMin}" />
+				</div>
+				<div class="col-md-6">
+					<input type="text" pattern="([1-9]{1}[0-9]{0,7})(\.[0-9]{1,2})?$"
+						oninvalid="this.setCustomValidity('${fee_fill_message}')"
+						oninput="setCustomValidity('')" class="form-control"
+						name="monthlyFeeCriteriaMax" placeholder="${max_value}"
+						id="monthlyFeeCriteriaMax" value="${requestScope.monthlyFeeCriteriaMax}" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group col-md-2 vbottom">
+			<div id="executeButton" class="form-row">
+				<input type="hidden" name="minSpId" value="${requestScope.minSpId}"/> 
+				<input type="hidden" name="maxSpId" id="maxSpId" value="${requestScope.maxSpId}"/> 
+				<input type="hidden" name="lastSpId" id="lastSpId" value="${requestScope.lastSpId}"/> 
+				<input type="hidden" name="command" value="find_service_plans" /> 
+				<input type="hidden" name="direction" id="spListDirection" value="" /> 
+				<input type="hidden" name="pageNumber" id="pageNumber" value="${requestScope.pageNumber}" /> 
+				<input type="submit" class="btn btn-outline-secondary btn-sm" value="${apply_filter_button}" /><br />
+			</div>
+		</div>
+		
+	</div>
+
+</form>
+
+
+

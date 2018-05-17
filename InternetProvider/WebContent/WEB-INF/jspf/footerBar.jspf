@@ -1,0 +1,10 @@
+<%@ taglib prefix="ctg" uri="customtags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="${sessionScope.local}"/>
+<fmt:setBundle basename="localization.local" var="loc"/>
+<fmt:message bundle="${loc}" key="local.rightsReserved" var="rights_reserved" />
+<link rel="stylesheet" href="css/footer.css">
+<footer class="footer">
+	<span class="text-muted"><ctg:info-year /></span>
+	<span class="text-muted"> ${rights_reserved}</span> 
+</footer>

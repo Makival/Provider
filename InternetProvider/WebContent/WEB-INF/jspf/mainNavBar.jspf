@@ -1,0 +1,24 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:message bundle="${loc}" key="local.goToUserProfileButton.name" var="go_to_user_profile_button" />
+<fmt:message bundle="${loc}" key="local.signoutButton.name" var="sign_out_button" />
+<fmt:message bundle="${loc}" key="local.goToMainButton.name" var="go_to_main_button" />
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Flash telecom</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+     <li class="nav-item">
+       <a class="nav-link" href="FrontController?command=go_to_user_update_page">${go_to_user_profile_button}</a>
+     </li>
+      <li class="nav-item">
+       <a class="nav-link" href="FrontController?command=go_to_main_page">${go_to_main_button}</a>
+     </li>
+      <li class="nav-item">
+       <a class="nav-link" href="FrontController?command=log_out">${sign_out_button}</a>
+     </li>
+    </ul>
+    <div class="userName">${sessionScope.currentUser.name}</div>
+  </div>
+</nav>
