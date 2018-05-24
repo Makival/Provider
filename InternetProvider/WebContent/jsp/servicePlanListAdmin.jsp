@@ -319,19 +319,19 @@
 							<div class="form-group row">
 								<label for="accessDiscount" class="col-sm-4 col-form-label">${access_discount}</label>
 								<div class="col-sm-4">
-									<input type="text" pattern="([1-9]{1}[0-9]{0,1})"
+									<input type="text" pattern="([1-9]{1}[\d]{0,1})|0"
 										oninvalid="this.setCustomValidity('${access_discount_fill_message}')"
 										oninput="setCustomValidity('')" class="form-control"
-										name="accessDiscount" id="accessDiscount" value="" required />
+										name="accessDiscount" id="accessDiscount" value="0" required />
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="trafficBonus" class="col-sm-4 col-form-label">${traffic_bonus}</label>
 								<div class="col-sm-4">
-									<input type="text" pattern="([1-9]{1}[0-9]{0,1})"
+									<input type="text" pattern="([1-9]{1}[\d]{0,1})|0"
 										oninvalid="this.setCustomValidity('${traffic_bonus_fill_message}')"
 										oninput="setCustomValidity('')" class="form-control"
-										name="trafficBonus" id="trafficBonus" value="" required />
+										name="trafficBonus" id="trafficBonus" value="0" required />
 								</div>
 							</div>
 						</div>

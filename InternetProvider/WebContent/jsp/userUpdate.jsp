@@ -13,7 +13,7 @@
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.login" var="login" />
-<fmt:message bundle="${loc}" key="local.password" var="password" />
+<fmt:message bundle="${loc}" key="local.passwordOld" var="password_old" />
 <fmt:message bundle="${loc}" key="local.passwordVerification"
 	var="password_verification" />
 <fmt:message bundle="${loc}" key="local.passwordNew" var="password_new" />
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="currentPassword" class="col-sm-2 col-form-label">${password}</label>
+				<label for="currentPassword" class="col-sm-2 col-form-label">${password_old}</label>
 				<div class="col-sm-4">
 					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"

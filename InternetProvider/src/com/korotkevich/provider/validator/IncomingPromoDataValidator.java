@@ -12,8 +12,8 @@ public class IncomingPromoDataValidator {
 	private final static String PARAM_DISCOUNT = "accessDiscount";
 	private final static String REG_EX_ID = "[\\d]{1,10}";
 	private final static String REG_EX_NAME ="([A-Za-z]{1})([A-Za-z0-9-_\\s]{5,50})";
-	private final static String REG_EX_BONUS = "([1-9]{1}[0-9]{0,1})";
-	private final static String REG_EX_DISCOUNT = "([1-9]{1}[0-9]{0,1})";
+	private final static String REG_EX_BONUS = "([1-9]{1}[\\d]{0,1})|0";
+	private final static String REG_EX_DISCOUNT = "([1-9]{1}[\\d]{0,1})";
 	private final static String DEFAULT_VALUE = "";
 
 	private static boolean validateValue(String value, String regEx){

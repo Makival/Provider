@@ -1,7 +1,7 @@
 function prepareSpAddForm() {
 	commandValue = "service_plan_add";
 	setCommand(commandValue, "sp_command");
-	prepareSpAttributes(false);
+	prepareSpAttributes(false. false);
 }
 
 function prepareSpUpdateForm(formName) {
@@ -9,7 +9,7 @@ function prepareSpUpdateForm(formName) {
 	setCommand(commandValue, "sp_command");
 	var isIdCorrect = checkId(formName, "#spForm");
 	if (isIdCorrect) {
-		prepareSpAttributes(true);
+		prepareSpAttributes(true, false);
 	}
 	;
 }
@@ -19,7 +19,7 @@ function prepareSpDeleteForm(formName) {
 	setCommand(commandValue, "sp_command");
 	var isIdCorrect = checkId(formName, "#spForm");
 	if (isIdCorrect) {
-		prepareSpAttributes(true);
+		prepareSpAttributes(true, true);
 	}
 	;
 }
@@ -31,6 +31,7 @@ function preparePromoAddForm(formName) {
 	setCommand(commandValue, "promo_command");
 	if (isIdCorrect) {
 		checkPromoValidity(true, formName, dataTargetValue);
+		preparePromoAttributes(false);
 	}
 }
 
@@ -41,11 +42,11 @@ function preparePromoDeleteForm(formName) {
 	setCommand(commandValue, "promo_command");
 	if (isIdCorrect) {
 		checkPromoValidity(false, formName, dataTargetValue);
-		preparePromoAttributes();
+		preparePromoAttributes(true);
 	}
 }
 
-function prepareSpAttributes(fillAttributesIn) {
+function prepareSpAttributes(fillAttributesIn, deleteForm) {
 	var spName = document.getElementById("name");
 	var traffic = document.getElementById("trafficLimit");
 	var fee = document.getElementById("monthlyFee");
@@ -68,20 +69,44 @@ function prepareSpAttributes(fillAttributesIn) {
 		accessCost.value = "";
 		description.value = "";
 	}
-	;
+	
+	if(deleteForm){
+		spName.disabled = true;
+		traffic.disabled = true;
+		fee.disabled = true;
+		accessCost.disabled = true;
+		description.disabled = true;
+	}else{
+		spName.disabled = false;
+		traffic.disabled = false;
+		fee.disabled = false;
+		accessCost.disabled = false;
+		description.disabled = false;
+	}
 }
 
-function preparePromoAttributes() {
+function preparePromoAttributes(deleteForm) {
 	var promoId = document.getElementById("promoId");
 	var promoName = document.getElementById("promoName");
 	var accessDiscount = document.getElementById("accessDiscount");
 	var trafficBonus = document.getElementById("trafficBonus");
 	var currentRow = $("#spTable").find(".table-primary");
+	
+	if (deleteForm){
+		promoName.disabled = true;
+		accessDiscount.disabled = true;
+		trafficBonus.disabled = true;
 
-	promoId.value = currentRow.find(".td_promo_id").html();
-	promoName.value = currentRow.find(".td_promo_name").html();
-	accessDiscount.value = currentRow.find(".td_promo_access_discount").html();
-	trafficBonus.value = currentRow.find(".td_promo_traffic_bonus").html();
+		promoId.value = currentRow.find(".td_promo_id").html();
+		promoName.value = currentRow.find(".td_promo_name").html();
+		accessDiscount.value = currentRow.find(".td_promo_access_discount").html();
+		trafficBonus.value = currentRow.find(".td_promo_traffic_bonus").html();		
+	} else{
+		promoName.disabled = false;
+		accessDiscount.disabled = false;
+		trafficBonus.disabled = false;	
+	}
+
 }
 
 function setCommand(commandValue, elementId) {
