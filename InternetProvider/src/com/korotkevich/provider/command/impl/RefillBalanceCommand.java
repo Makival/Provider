@@ -22,6 +22,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ClientAccountLogic;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Changes clients balance data
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class RefillBalanceCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PARAM_SUMM = "refillSumm";

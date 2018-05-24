@@ -15,6 +15,7 @@ import com.korotkevich.provider.command.impl.FindAllUsersCommand;
 import com.korotkevich.provider.command.impl.FindServicePlansByCriteriaCommand;
 import com.korotkevich.provider.command.impl.ChangeUserServicePlanCommand;
 import com.korotkevich.provider.command.impl.ServicePlanAddCommand;
+import com.korotkevich.provider.command.impl.ServicePlanUpdateCommand;
 import com.korotkevich.provider.command.impl.ServicePlanRemoveCommand;
 import com.korotkevich.provider.command.impl.GoToServicePlanListPageCommand;
 import com.korotkevich.provider.command.impl.GoToErrorPageCommand;
@@ -47,6 +48,7 @@ public enum CommandType {
 	CHOOSE_SERVICE_PLAN(new ChangeUserServicePlanCommand(new ServicePlanLogic(), new ClientAccountLogic()), 1),
 	SERVICE_PLAN_ADD(new ServicePlanAddCommand( new ServicePlanLogic()), 2),
 	SERVICE_PLAN_REMOVE(new ServicePlanRemoveCommand( new ServicePlanLogic()), 2),
+	SERVICE_PLAN_UPDATE(new ServicePlanUpdateCommand( new ServicePlanLogic()), 2),
 	GO_TO_SERVICE_PLAN_LIST_PAGE(new GoToServicePlanListPageCommand( new ServicePlanLogic()), 1),
 	GO_TO_ERROR_PAGE(new GoToErrorPageCommand(), 0),	
 	PROMO_ADD(new PromoAddCommand( new PromoLogic(), new ServicePlanLogic()), 2),

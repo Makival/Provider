@@ -25,6 +25,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingServicePlanDataValidator;
 
+/**
+ * Updates data of the chosen service plan
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ServicePlanUpdateCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String ATTR_ERROR_LIST_NAME = "validationErrorList";

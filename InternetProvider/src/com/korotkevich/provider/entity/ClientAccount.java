@@ -11,12 +11,13 @@ public class ClientAccount {
 	private int clientId;
 	private BigDecimal cashBalance;
 	private double trafficBalance;
+	private final static double INITIAL_BALANCE_VALUE = 0.0;
 
 	/**
 	 * Default constructor
 	 */
 	public ClientAccount() {
-		
+		this.cashBalance = constructBigDecimal(INITIAL_BALANCE_VALUE);
 	}
 	
 	/**
@@ -25,6 +26,7 @@ public class ClientAccount {
 	 */
 	public ClientAccount(int clientId) {
 		this.clientId = clientId;
+		this.cashBalance = constructBigDecimal(INITIAL_BALANCE_VALUE);
 	}
 	
 	/**

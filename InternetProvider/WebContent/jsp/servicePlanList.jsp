@@ -8,27 +8,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<jsp:include page="/WEB-INF/jspf/headerMin.jspf"/>
+<jsp:include page="/WEB-INF/jspf/headerMin.jspf" />
 <style type="text/css">
 </style>
-	<fmt:setLocale value="${sessionScope.local}"/>
-	<fmt:setBundle basename="localization.local" var="loc"/>
-	<fmt:message bundle="${loc}" key="local.nextButton.name" var="next_button" />
-	<fmt:message bundle="${loc}" key="local.prevButton.name" var="prev_button" />	
-	<fmt:message bundle="${loc}" key="local.changeServicePlanButton.name" var="choose_sp_button" />
-	<fmt:message bundle="${loc}" key="local.servicePlan" var="service_plan" />
-	<fmt:message bundle="${loc}" key="local.trafficLimit" var="traffic_limit" />
-	<fmt:message bundle="${loc}" key="local.monthlyFee" var="monthly_fee" />
-	<fmt:message bundle="${loc}" key="local.accessCost" var="access_cost" />
-	<fmt:message bundle="${loc}" key="local.servicePlanDescription" var="description" />
-	<fmt:message bundle="${loc}" key="local.chooseServicePlanMessage" var="choose_sp_message" />
-	<fmt:message bundle="${loc}" key="local.insufficientFundsMessage" var="insufficient_funds_message" />
-	
-	<fmt:message bundle="${loc}" key="local.applyFilterButton.name" var="apply_filter_button" />
-	
-	<fmt:message bundle="${loc}" key="local.minValue" var="min_value" />
-	<fmt:message bundle="${loc}" key="local.maxValue" var="max_value" />
-	
+<fmt:setLocale value="${sessionScope.local}" />
+<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:message bundle="${loc}" key="local.nextButton.name"
+	var="next_button" />
+<fmt:message bundle="${loc}" key="local.prevButton.name"
+	var="prev_button" />
+<fmt:message bundle="${loc}" key="local.changeServicePlanButton.name"
+	var="choose_sp_button" />
+<fmt:message bundle="${loc}" key="local.servicePlan" var="service_plan" />
+<fmt:message bundle="${loc}" key="local.trafficLimit"
+	var="traffic_limit" />
+<fmt:message bundle="${loc}" key="local.monthlyFee" var="monthly_fee" />
+<fmt:message bundle="${loc}" key="local.accessCost" var="access_cost" />
+<fmt:message bundle="${loc}" key="local.servicePlanDescription"
+	var="description" />
+<fmt:message bundle="${loc}" key="local.chooseServicePlanMessage"
+	var="choose_sp_message" />
+
+<fmt:message bundle="${loc}" key="local.applyFilterButton.name"
+	var="apply_filter_button" />
+<fmt:message bundle="${loc}" key="local.accessCostFillMessage"
+	var="access_cost_fill_message" />
+<fmt:message bundle="${loc}" key="local.feeFillMessage"
+	var="fee_fill_message" />
+<fmt:message bundle="${loc}" key="local.servicePlanFillMessage"
+	var="sp_fill_message" />
+
+<fmt:message bundle="${loc}" key="local.minValue" var="min_value" />
+<fmt:message bundle="${loc}" key="local.maxValue" var="max_value" />
+<jsp:include page="/WEB-INF/jspf/headerMin.jspf" />
+<script src="js/spModalMin.js"></script>
+
 <title>Service plan list</title>
 </head>
 <body>
@@ -73,44 +87,47 @@
 			</div>
 		</div>
 		<script>
-		$('tr').click(function(e){
-		    e.preventDefault();
-		    $('tr').removeClass('table-primary'); 
-		    $(this).addClass('table-primary');
-		    var element = document.getElementById("chosenSpId");
-		    element.value = $(this).find(".td_id").html(); 
-		});		
+			$('tr').click(function(e) {
+				e.preventDefault();
+				$('tr').removeClass('table-primary');
+				$(this).addClass('table-primary');
+				var element = document.getElementById("chosenSpId");
+				element.value = $(this).find(".td_id").html();
+			});
 		</script>
 
 		<nav aria-label="Page navigation">
-				<ul class="pagination justify-content-center">
-					<c:if test="${requestScope.pageNumber == 1}">
-						<li class="page-item disabled"><a class="page-link" href="#" id="prevList">${prev_button}</a></li>
-					</c:if>
-					<c:if test="${requestScope.pageNumber != 1}">
-						<li class="page-item"><a class="page-link" href="#" id="prevList">${prev_button}</a></li>
-					</c:if>
-					<li class="page-item"><a class="page-link">${requestScope.pageNumber}</a></li>
-					<c:if test="${requestScope.lastSpId == requestScope.maxSpId}">
-						<li class="page-item disabled"><a class="page-link" href="#" id="nextList">${next_button}</a></li>
-					</c:if>
-					<c:if test="${requestScope.lastSpId != requestScope.maxSpId}">
-						<li class="page-item"><a class="page-link" href="#" id="nextList">${next_button}</a></li>
-					</c:if>
-				</ul>
-			</nav>
+			<ul class="pagination justify-content-center">
+				<c:if test="${requestScope.pageNumber == 1}">
+					<li class="page-item disabled"><a class="page-link" href="#"
+						id="prevList">${prev_button}</a></li>
+				</c:if>
+				<c:if test="${requestScope.pageNumber != 1}">
+					<li class="page-item"><a class="page-link" href="#"
+						id="prevList">${prev_button}</a></li>
+				</c:if>
+				<li class="page-item"><a class="page-link">${requestScope.pageNumber}</a></li>
+				<c:if test="${requestScope.lastSpId == requestScope.maxSpId}">
+					<li class="page-item disabled"><a class="page-link" href="#"
+						id="nextList">${next_button}</a></li>
+				</c:if>
+				<c:if test="${requestScope.lastSpId != requestScope.maxSpId}">
+					<li class="page-item"><a class="page-link" href="#"
+						id="nextList">${next_button}</a></li>
+				</c:if>
+			</ul>
+		</nav>
 
-		<input type="hidden" name="chooseSpMessage" id="chooseSpMessage" value="${choose_sp_message}" />
+		<input type="hidden" name="chooseSpMessage" id="chooseSpMessage"
+			value="${choose_sp_message}" />
 
-		<form action="FrontController" method="post" onsubmit="return checkId()">
-			<input type="hidden" name="chosenSpId" id="chosenSpId" value="0" /> 
-			<input type="hidden" name="command" value="choose_service_plan" /> 
-			<input type="submit" class="btn btn-outline-secondary btn-sm" id ="chooseSp" value="${choose_sp_button}" /><br />	
+		<form action="FrontController" method="post"
+			onsubmit="return checkSpId()">
+			<input type="hidden" name="chosenSpId" id="chosenSpId" value="0" />
+			<input type="hidden" name="command" value="choose_service_plan" /> <input
+				type="submit" class="btn btn-outline-secondary btn-sm" id="chooseSp"
+				value="${choose_sp_button}" /><br />
 		</form>
-		
-		<c:if test="${requestScope.insufficientFunds eq 'TRUE'}">
-			<p>${insufficient_funds_message}</p>
-		</c:if>
 
 		<script>
 			var form = document.getElementById("getSpListForm");
@@ -136,17 +153,6 @@
 						}
 					});
 		</script>
-		
-		<script>
-		function checkId() {
-			var spId = document.getElementById("chosenSpId");
-			var message = document.getElementById("chooseSpMessage").value;
-			if (spId.value == 0) {
-				alert(message);
-				return false; 
-			}
-		}
-		</script>
-	</div>				
+	</div>
 </body>
 </html>

@@ -10,6 +10,11 @@ import com.korotkevich.provider.command.JspAddress;
 import com.korotkevich.provider.controller.Router;
 import com.korotkevich.provider.entity.UserRole;
 
+/**
+ * Prepares registration page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class GoToRegPageCommand implements Command {
 
 	@Override

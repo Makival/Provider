@@ -21,6 +21,11 @@ import com.korotkevich.provider.entity.UserRole;
 import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.UserLogic;
 
+/**
+ * Prepares user list for sending to client
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class FindAllUsersCommand  implements Command  {
 	private static Logger logger = LogManager.getLogger();
 	private final static String USER_LIST = "userList";

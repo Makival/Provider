@@ -11,6 +11,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 
+/**
+ * Checks and updates encoding if it is empty
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 @WebFilter(urlPatterns = { "/FrontController" }, initParams = { @WebInitParam(name = "REQUEST_ENCODING", value = "UTF-8") })
 public class WebCharsetFilter implements Filter {
 	private String encoding;

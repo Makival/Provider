@@ -9,6 +9,11 @@ import com.korotkevich.provider.command.Command;
 import com.korotkevich.provider.command.JspAddress;
 import com.korotkevich.provider.controller.Router;
 
+/**
+ * Prepares error page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class GoToErrorPageCommand implements Command {
 	private static final String ATTR_ACCESS_VIOLATION = "accessViolation";
 	private static final String ATTR_COMMAND_ERROR = "commandError";

@@ -290,7 +290,7 @@ public class ServicePlan {
 	 * @return monthlyFee
 	 */
 	public double getMonthlyFee() {
-		return monthlyFee.setScale(CurrencyParameter.BYN.getScale(), CurrencyParameter.BYN.getRounding()).doubleValue();
+		return monthlyFee.setScale(CurrencyParameter.BYN.getScale(), CurrencyParameter.BYN.getRounding()).doubleValue();		
 	}
 
 	/**

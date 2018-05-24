@@ -26,6 +26,11 @@ import com.korotkevich.provider.logic.ClientAccountLogic;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.logic.UserLogic;
 
+/**
+ * Prepares main page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class GoToMainPageCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String ATTR_SERVICE_PLAN = "servicePlan";

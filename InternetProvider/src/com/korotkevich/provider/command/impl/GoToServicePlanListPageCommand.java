@@ -26,6 +26,11 @@ import com.korotkevich.provider.entity.criteria.SearchCriteria;
 import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 
+/**
+ * Prepares service plan list page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class GoToServicePlanListPageCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PAGE_NUMBER = "pageNumber";

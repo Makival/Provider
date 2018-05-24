@@ -17,6 +17,11 @@ import com.korotkevich.provider.command.CommandType;
 import com.korotkevich.provider.command.RedirectAddress;
 import com.korotkevich.provider.entity.User;
 
+/**
+ * Checks user rights for command execution
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 @WebFilter(urlPatterns = { "/FrontController" })
 public class AuthorisationCheckFilter implements Filter {
 	private final static String ATTR_USER = "currentUser";

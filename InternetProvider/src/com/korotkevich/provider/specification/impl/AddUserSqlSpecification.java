@@ -15,7 +15,7 @@ import com.korotkevich.provider.specification.StatementType;
 public class AddUserSqlSpecification implements SqlSpecification {
 	private final static String SQL_QUERY = "INSERT INTO internet_provider.users "
 											+"(name, surname, login, password, role, user_statuses_id, e_mail, registration_date, birth_date) VALUES " 
-											+ "(?,?,?,?,?,?,?,?,?)";
+											+ "(?,?,?,SHA1(?),?,?,?,?,?)";
 	private final static int PARAM_NAME_INDEX = 1;
 	private final static int PARAM_SURNAME_INDEX = 2;
 	private final static int PARAM_LOGIN_INDEX = 3;

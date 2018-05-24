@@ -5,18 +5,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.korotkevich.provider.command.ServicePlanParameter;
+
 public class IncomingServicePlanDataValidator {
-	private final static String PARAM_ID = "id";
-	private final static String PARAM_NAME = "name";
-	private final static String PARAM_LIMIT = "trafficLimit";
-	private final static String PARAM_FEE = "monthlyFee";
-	private final static String PARAM_ACCESS_COST = "accessCost";
-	private final static String PARAM_DESCRIPTION = "description";
 	private final static String REG_EX_ID = "[\\d]{1,10}";
-	private final static String REG_EX_NAME = "([A-Za-z]{1})([A-Za-z0-9-_\\s]{5,50})";
-	private final static String REG_EX_TRAFFIC_LIMIT = "([1-9]{1})([0-9]{0,9})?$";
-	private final static String REG_EX_FEE = "([1-9]{1}[0-9]{0,7})(\\.[0-9]{1,2})?$";
-	private final static String REG_EX_ACCESS_COST = "([1-9]{1}[0-9]{0,7})(\\.[0-9]{1,2})?$";
+	private final static String REG_EX_NAME = "([A-Z]{1})([A-Za-z0-9-_\\s]{5,50})";
+	private final static String REG_EX_TRAFFIC_LIMIT = "([1-9]{1})([0-9]{0,3})?$";
+	private final static String REG_EX_FEE = "([1-9]{1}[0-9]{0,3})(\\.[0-9]{1,2})?$";
+	private final static String REG_EX_ACCESS_COST = "([1-9]{1}[0-9]{0,3})(\\.[0-9]{1,2})?$";
 	private final static String REG_EX_DESCRIPTION = "[^{}#()]{5,50}";	
 	private final static String DEFAULT_VALUE = "";
 
@@ -41,32 +37,32 @@ public class IncomingServicePlanDataValidator {
 		boolean isDescriptionCorrect;
 		boolean isServicePlanValidated;
 
-		isIdCorrect = validateValue(servicePlanMap.get(PARAM_ID), REG_EX_ID);
+		isIdCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.ID.getParameterName()), REG_EX_ID);
 		if(!isIdCorrect) {
 			errorList.add("InvalidId");	
 		}
 
-		isNameCorrect = validateValue(servicePlanMap.get(PARAM_NAME), REG_EX_NAME);
+		isNameCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.NAME.getParameterName()), REG_EX_NAME);
 		if(!isNameCorrect) {
 			errorList.add("InvalidName");	
 		}
 
-		isLimitCorrect = validateValue(servicePlanMap.get(PARAM_LIMIT), REG_EX_TRAFFIC_LIMIT);
+		isLimitCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.TRAFFIC_LIMIT.getParameterName()), REG_EX_TRAFFIC_LIMIT);
 		if(!isLimitCorrect) {
 			errorList.add("InvalidLimit");	
 		}
 
-		isFeeCorrect = validateValue(servicePlanMap.get(PARAM_FEE), REG_EX_FEE);
+		isFeeCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.MONTHLY_FEE.getParameterName()), REG_EX_FEE);
 		if(!isFeeCorrect) {
 			errorList.add("InvalidFee");	
 		}
 
-		isAccessCostCorrect = validateValue(servicePlanMap.get(PARAM_ACCESS_COST), REG_EX_ACCESS_COST);
+		isAccessCostCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.ACCESS_COST.getParameterName()), REG_EX_ACCESS_COST);
 		if(!isAccessCostCorrect) {
 			errorList.add("InvalidAccessCost");	
 		}
 
-		isDescriptionCorrect = validateValue(servicePlanMap.get(PARAM_DESCRIPTION), REG_EX_DESCRIPTION);
+		isDescriptionCorrect = validateValue(servicePlanMap.get(ServicePlanParameter.DESCRIPTION.getParameterName()), REG_EX_DESCRIPTION);
 		if(!isDescriptionCorrect) {
 			errorList.add("InvalidDescription");	
 		}

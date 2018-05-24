@@ -14,7 +14,7 @@ import com.korotkevich.provider.specification.StatementType;
 
 public class UpdateUserFullDataSqlSpecification implements SqlSpecification {
 	private final static String SQL_QUERY = "UPDATE internet_provider.users "
-			+ "SET name = ?, surname = ?, login = ?, password = MD5(?), e_mail = ?, birth_date = ? " 
+			+ "SET name = ?, surname = ?, login = ?, password = SHA1(?), e_mail = ?, birth_date = ? " 
 			+ "WHERE id = ?";
 	
 	private final static int PARAM_NAME_INDEX = 1;

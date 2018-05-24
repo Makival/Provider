@@ -27,6 +27,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Prepares service plan list for sending to client
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class FindServicePlansByCriteriaCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String DIRECTION = "direction";

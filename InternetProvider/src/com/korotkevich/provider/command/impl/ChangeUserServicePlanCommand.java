@@ -24,11 +24,18 @@ import com.korotkevich.provider.logic.ClientAccountLogic;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Changes current client service plan
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ChangeUserServicePlanCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PARAM_SP_ID = "chosenSpId";
 	private final static String ATTR_SP_INVALIDATED = "spInvalidated";
 	private final static String ATTR_MSG_MAP = "messageMap";
+	private final static String ATTR_SERVICE_PLAN = "servicePlan";
+	private final static String ATTR_CLIENT_ACCOUNT = "clientAccount";
 	private final static String SP_CHOSEN_MSG = "servicePlanChosenSuccess";
 	private final static String SP_CHOSEN_ERROR_MSG = "servicePlanChosenError";
 	private final static String SP_NOT_FOUND_MSG = "servicePlanNotFound";
@@ -76,7 +83,11 @@ public class ChangeUserServicePlanCommand implements Command {
 			boolean isFundsSufficient = checkFunds(account, servicePlanDB);
 			if(!isFundsSufficient) {
 				request.setAttribute(INSUFFISIENT_FUNDS_MSG, true);
-				router.setJspPath(JspAddress.SERVICE_PLAN_LIST.getPath());
+				router.setJspPath(JspAddress.MAIN_USER.getPath());
+				ServicePlan servicePlan = findUserServicePlan(currentUser);
+				ClientAccount clientAccount = findUserAccount(currentUser);
+				request.setAttribute(ATTR_SERVICE_PLAN, servicePlan);
+				request.setAttribute(ATTR_CLIENT_ACCOUNT, clientAccount);
 				return router;
 			}
 			
@@ -122,7 +133,8 @@ public class ChangeUserServicePlanCommand implements Command {
 	}
 	
 	private boolean checkFunds(ClientAccount account, ServicePlan servicePlan) {
-		boolean isFundsSufficient = account.getCashBalance() >= servicePlan.getAccessCost() - servicePlan.getPromoDiscount();
+		boolean isFundsSufficient = account.getCashBalance() >= servicePlan.getAccessCost()
+				- (servicePlan.getAccessCost() * servicePlan.getPromoDiscount() / BASE_VALUE);
 		return isFundsSufficient;
 	}
 	
@@ -138,6 +150,28 @@ public class ChangeUserServicePlanCommand implements Command {
 		BigDecimal cashBalance = new BigDecimal(account.getCashBalance());
 		BigDecimal accessCost = new BigDecimal(accessCostValue);
 		account.setCashBalance(cashBalance.subtract(accessCost));
+	}
+	
+	private ServicePlan findUserServicePlan(User user) {
+		ServicePlan servicePlan = null;
+		try {
+			servicePlan = servicePlanLogic.findServicePlanByUserId(user);
+		} catch (LogicException e) {
+			logger.log(Level.ERROR, "Error occured while getting service plan: " + e);
+		}
+		return servicePlan;
+
+	}
+	
+	private ClientAccount findUserAccount(User user) {
+		ClientAccount account = null;
+		try {
+			account = accountLogic.findAccountByUserId(user);
+		} catch (LogicException e) {
+			logger.log(Level.ERROR, "Error occured while getting client account : " + e);
+		}
+		return account;
+
 	}
 
 }

@@ -18,8 +18,7 @@ public class Criteria<E> {
 	}
 	
 	public Object get(E searchCriteria) {
-		Object value = criteriaMap.get(searchCriteria);
-		
+		Object value = criteriaMap.get(searchCriteria);	
 		return value;
 	}
 	

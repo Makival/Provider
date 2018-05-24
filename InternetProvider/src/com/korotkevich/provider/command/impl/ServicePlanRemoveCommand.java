@@ -25,6 +25,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Removes (changes status) service plan
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ServicePlanRemoveCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PARAM_ID = "spId";

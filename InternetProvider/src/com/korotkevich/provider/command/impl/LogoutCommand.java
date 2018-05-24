@@ -8,6 +8,11 @@ import com.korotkevich.provider.controller.Router;
 import com.korotkevich.provider.controller.Router.RouteType;
 import com.korotkevich.provider.controller.session.SessionPool;
 
+/**
+ * Prepares session for log out
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class LogoutCommand implements Command  {
 	private SessionPool sessionPool;
 	

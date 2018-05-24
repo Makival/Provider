@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Implements ProtectedConnection interface
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class WrapperConnection implements ProtectedConnection {
 	private Connection connection;
 	

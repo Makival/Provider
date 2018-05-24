@@ -29,6 +29,11 @@ import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingPromoDataValidator;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Adds new promo
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class PromoAddCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String ATTR_ERROR_LIST_NAME = "validationErrorList";
@@ -62,7 +67,6 @@ public class PromoAddCommand implements Command {
 		
 		boolean isPromoValidated = IncomingPromoDataValidator.validatePromoData(promoParametersMap, validationErrorList);
 		boolean isSpIdValidated = IncomingSimpleDataValidator.validatePositiveInt(servicePlanIdValue);
-	
 		
 		if (!isPromoValidated || !isSpIdValidated) {
 			prepareServicePlanList(request);
@@ -131,13 +135,13 @@ public class PromoAddCommand implements Command {
 	private Map<String, String> preparePromoValuesMap(String defaultId, String nameValue, String trafficBonus,
 			String accessDiscount) {
 
-		Map<String, String> servicePlanMap = new HashMap<String, String>();
-		servicePlanMap.put(PromoParameter.PROMO_ID.getParameterName(), defaultId);
-		servicePlanMap.put(PromoParameter.NAME.getParameterName(), nameValue);
-		servicePlanMap.put(PromoParameter.TRAFFIC_BONUS.getParameterName(), trafficBonus);
-		servicePlanMap.put(PromoParameter.ACCESS_DISCOUNT.getParameterName(), accessDiscount);
+		Map<String, String> promoParameterMap = new HashMap<String, String>();
+		promoParameterMap.put(PromoParameter.PROMO_ID.getParameterName(), defaultId);
+		promoParameterMap.put(PromoParameter.NAME.getParameterName(), nameValue);
+		promoParameterMap.put(PromoParameter.TRAFFIC_BONUS.getParameterName(), trafficBonus);
+		promoParameterMap.put(PromoParameter.ACCESS_DISCOUNT.getParameterName(), accessDiscount);
 
-		return servicePlanMap;
+		return promoParameterMap;
 	}
 	
 	private void prepareServicePlanList(HttpServletRequest request) {

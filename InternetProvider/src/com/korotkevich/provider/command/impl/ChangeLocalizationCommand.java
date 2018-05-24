@@ -6,6 +6,11 @@ import com.korotkevich.provider.command.Command;
 import com.korotkevich.provider.command.JspAddress;
 import com.korotkevich.provider.controller.Router;
 
+/**
+ * Changes localization according to incoming localization parameter
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ChangeLocalizationCommand implements Command {
 	private final static String PARAM_LOCAL = "local";
 

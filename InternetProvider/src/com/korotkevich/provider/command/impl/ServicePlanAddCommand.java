@@ -25,6 +25,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.ServicePlanLogic;
 import com.korotkevich.provider.validator.IncomingServicePlanDataValidator;
 
+/**
+ * Adds new service plan
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ServicePlanAddCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String ATTR_ERROR_LIST_NAME = "validationErrorList";
@@ -88,15 +93,15 @@ public class ServicePlanAddCommand implements Command {
 	}
 	
 	private Map<String, String> prepareServicePlanValuesMap(String defaultId, String nameValue, String trafficLimit,
-			String monthlyFee, String descriptionValue, String accessCost) {
+			String monthlyFee, String accessCost, String descriptionValue) {
 
 		Map<String, String> servicePlanMap = new HashMap<String, String>();
 		servicePlanMap.put(ServicePlanParameter.ID.getParameterName(), defaultId);
 		servicePlanMap.put(ServicePlanParameter.NAME.getParameterName(), nameValue);
 		servicePlanMap.put(ServicePlanParameter.TRAFFIC_LIMIT.getParameterName(), trafficLimit);
 		servicePlanMap.put(ServicePlanParameter.MONTHLY_FEE.getParameterName(), monthlyFee);
-		servicePlanMap.put(ServicePlanParameter.ACCESS_COST.getParameterName(), descriptionValue);
-		servicePlanMap.put(ServicePlanParameter.DESCRIPTION.getParameterName(), accessCost);
+		servicePlanMap.put(ServicePlanParameter.ACCESS_COST.getParameterName(), accessCost);
+		servicePlanMap.put(ServicePlanParameter.DESCRIPTION.getParameterName(), descriptionValue);
 		
 		return servicePlanMap;
 	}

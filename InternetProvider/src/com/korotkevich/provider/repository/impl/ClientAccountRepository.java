@@ -21,6 +21,11 @@ import com.korotkevich.provider.specification.SqlSpecification;
 import com.korotkevich.provider.specification.StatementType;
 import com.korotkevich.provider.specification.impl.AddClientAccountSqlSpecification;
 
+/**
+ * Implements Repository interface. Interacts with client account data 
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ClientAccountRepository implements Repository<ClientAccount> {
 	private ConnectionPool connectionPool;
 	

@@ -6,6 +6,11 @@ import com.korotkevich.provider.command.Command;
 import com.korotkevich.provider.command.JspAddress;
 import com.korotkevich.provider.controller.Router;
 
+/**
+ * Prepares user update page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class GoToUserUpdatePageCommand implements Command {
 
 	@Override

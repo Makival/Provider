@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class IncomingSimpleDataValidator {
 	private final static String REG_EX_POSITIVE_INT = "([1-9]{1})([\\d]{0,9})";
-	private final static String REG_EX_POSITIVE_DOUBLE = "([1-9]{1}[0-9]{0,7})(\\.[0-9]{2})?$";
-	private final static String REG_EX_DOUBLE = "([0-9]{0,8})(\\.[0-9]{1,2})?$";
+	private final static String REG_EX_POSITIVE_DOUBLE = "([1-9]{1}[0-9]{0,3})(\\.[\\d]{1,2})?$";
+	private final static String REG_EX_DOUBLE = "([\\d]{0,8})(\\.[\\d]{1,2})?$";
 	private final static String REG_EX_STRING ="([A-Za-z0-9-_\\s]{0,50})";
 	private final static String DEFAULT_VALUE = "";
 	

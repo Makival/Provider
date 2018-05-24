@@ -89,6 +89,15 @@ function setCommand(commandValue, elementId) {
 	command.value = commandValue;
 }
 
+function checkSpId() {
+	var spId = document.getElementById("chosenSpId");
+	var message = document.getElementById("chooseSpMessage").value;
+	if (spId.value == 0) {
+		alert(message);
+		return false;
+	}
+}
+
 function checkId(formName, dataTargetValue) {
 	var spId = document.getElementById("spId");
 	var message = document.getElementById("chooseSpMessage").value;

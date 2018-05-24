@@ -20,6 +20,11 @@ import com.korotkevich.provider.specification.SqlSpecification;
 import com.korotkevich.provider.specification.impl.AddServicePlanSqlSpecification;
 import com.korotkevich.provider.specification.impl.UpdateServicePlanRelevanceSqlSpecification;
 
+/**
+ * Implements Repository interface. Interacts with service plan data 
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class ServicePlanRepository implements Repository<ServicePlan> {
 	private ConnectionPool connectionPool;
 

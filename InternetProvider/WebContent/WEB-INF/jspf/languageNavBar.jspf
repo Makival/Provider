@@ -2,8 +2,10 @@
 <fmt:message bundle="${loc}" key="local.locButton.name.ru" var="ru_button" />
 <fmt:message bundle="${loc}" key="local.locButton.name.en" var="en_button" />
 <fmt:message bundle="${loc}" key="local.language" var="language" />
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand">Flash telecom</a>
+<fmt:message bundle="${loc}" key="local.logo" var="logo" />
+<link rel="stylesheet" href="css/header.css">
+<nav class="navbar navbar-expand-lg navbar-light header-bar">
+  <a class="navbar-brand">${logo}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

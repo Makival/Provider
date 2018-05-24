@@ -16,7 +16,7 @@ public class FindUserByLoginPassSqlSpecification implements SqlRetrieveSpecifica
 											+ "users.e_mail, DATE_FORMAT(users.registration_date, '%d-%m-%Y'), DATE_FORMAT(users.birth_date, '%d-%m-%Y') " 
 			 								+ "FROM internet_provider.users "
 			 								+"LEFT JOIN internet_provider.user_statuses ON internet_provider.users.user_statuses_id = internet_provider.user_statuses.id "
-			 								+"WHERE users.login = ? AND users.password = MD5(?)";
+			 								+"WHERE users.login = ? AND users.password = SHA1(?)";
 	private final static int PARAM_LOGIN_INDEX = 1;
 	private final static int PARAM_PASS_INDEX = 2;
 	private final static int NAME_INDEX = 1;

@@ -22,6 +22,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.UserLogic;
 import com.korotkevich.provider.validator.IncomingUserDataValidator;
 
+/**
+ * Changes data of the chosen user
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class UserUpdateCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PARAM_PASSWORD_VERIFICATION ="passwordVerification";

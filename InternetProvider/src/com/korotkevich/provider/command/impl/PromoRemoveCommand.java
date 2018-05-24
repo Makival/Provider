@@ -20,6 +20,11 @@ import com.korotkevich.provider.exception.LogicException;
 import com.korotkevich.provider.logic.PromoLogic;
 import com.korotkevich.provider.validator.IncomingSimpleDataValidator;
 
+/**
+ * Removes promo 
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class PromoRemoveCommand implements Command {
 	private static Logger logger = LogManager.getLogger();
 	private final static String PROMO_REMOVE_SUCCESS_MSG = "promoRemoveSuccess";

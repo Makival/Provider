@@ -1,8 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:message bundle="${loc}" key="local.goToLoginButton.name" var="go_to_login_button" />
 <fmt:message bundle="${loc}" key="local.goToMainButton.name" var="go_to_main_button" />
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand">Flash telecom</a>
+<fmt:message bundle="${loc}" key="local.logo" var="logo" />
+<link rel="stylesheet" href="css/header.css">
+<nav class="navbar navbar-expand-lg navbar-light header-bar">
+  <a class="navbar-brand">${logo}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

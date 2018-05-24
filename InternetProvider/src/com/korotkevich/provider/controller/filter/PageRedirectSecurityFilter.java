@@ -13,6 +13,11 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Redirects all requests for jsp pages to index.jsp page
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 @WebFilter(urlPatterns = { "/jsp/*" }, initParams = { @WebInitParam(name = "DEFAULT_PATH", value = "/index.jsp") })
 public class PageRedirectSecurityFilter implements Filter {
 	private String defaultPath;

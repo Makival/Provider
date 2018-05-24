@@ -22,6 +22,11 @@ import com.korotkevich.provider.specification.StatementType;
 import com.korotkevich.provider.specification.impl.AddUserSqlSpecification;
 import com.korotkevich.provider.specification.impl.UpdateUserStatusSqlSpecification;
 
+/**
+ * Implements Repository interface. Interacts with user data 
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class UserRepository implements Repository<User> {
 	private ConnectionPool connectionPool;
 

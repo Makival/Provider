@@ -20,6 +20,11 @@ import com.korotkevich.provider.specification.SqlSpecification;
 import com.korotkevich.provider.specification.impl.AddPromoSqlSpecification;
 import com.korotkevich.provider.specification.impl.RemovePromoSqlSpecification;
 
+/**
+ * Implements Repository interface. Interacts with promo data 
+ * @author Korotkevich Kirill 2018-05-22
+ *
+ */
 public class PromoRepository implements Repository<Promo> {
 	private ConnectionPool connectionPool;
 	

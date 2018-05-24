@@ -14,7 +14,7 @@ public class FindUserByIdPassSqlSpecification implements SqlRetrieveSpecificatio
 	private final static String SQL_QUERY = "SELECT users.id, users.login, users.name, users.surname, users.e_mail, DATE_FORMAT(users.birth_date, '%d-%m-%Y'), user_statuses.status "
 										  + "FROM internet_provider.users "
 										  + "LEFT JOIN internet_provider.user_statuses on internet_provider.users.user_statuses_id = internet_provider.user_statuses.id "
-										  + "WHERE users.id = ? AND users.password = MD5(?)";
+										  + "WHERE users.id = ? AND users.password = SHA1(?)";
 	private final static int PARAM_ID_INDEX = 1;
 	private final static int PARAM_PASSWORD_INDEX = 2;
 	private final static int ID_INDEX = 1;

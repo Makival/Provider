@@ -16,7 +16,7 @@ import com.korotkevich.provider.specification.StatementType;
 
 public class FindServicePlanListSqlSpecification implements SqlRetrieveSpecification {
 	private final static String SQL_QUERY_PATTERN_DEFAULT = "SELECT service_plans.id, service_plans.name as spName, service_plans.traffic_limit, service_plans.monthly_fee, service_plans.description, service_plans.access_cost, service_plans.relevant, "
-											+ "(SELECT MAX(service_plans.id) FROM internet_provider.service_plans WHERE service_plans.id > 0 %s ) as maxSpId, "
+											+ "(SELECT MAX(service_plans.id) FROM internet_provider.service_plans WHERE service_plans.id > 0 AND service_plans.relevant = true %s ) as maxSpId, "
 											+ "IFNULL(promos.id,0), promos.name, IFNULL(promos.access_discount,0), IFNULL(traffic_bonus, 0) "
 											+ "FROM internet_provider.service_plans "
 											+ "LEFT JOIN internet_provider.promos ON internet_provider.service_plans.id = internet_provider.promos.service_plans_id "
@@ -25,7 +25,7 @@ public class FindServicePlanListSqlSpecification implements SqlRetrieveSpecifica
 											+ "ORDER BY service_plans.id " 
 											+ "LIMIT ?";
 	private final static String SQL_QUERY_PATTERN_DESC = "SELECT * FROM (SELECT service_plans.id, service_plans.name as spName, service_plans.traffic_limit, service_plans.monthly_fee, service_plans.description, service_plans.access_cost, service_plans.relevant, "
-											+ "(SELECT MAX(service_plans.id) FROM internet_provider.service_plans WHERE service_plans.id > 0 %s ) as maxSpId, "
+											+ "(SELECT MAX(service_plans.id) FROM internet_provider.service_plans WHERE service_plans.id > 0 AND service_plans.relevant = true %s ) as maxSpId, "
 											+ "IFNULL(promos.id,0), promos.name, IFNULL(promos.access_discount,0), IFNULL(traffic_bonus, 0) " 
 											+ "FROM internet_provider.service_plans "
 											+ "LEFT JOIN internet_provider.promos ON internet_provider.service_plans.id = internet_provider.promos.service_plans_id " 
