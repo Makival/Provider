@@ -20,3 +20,7 @@ td.promo {
 	style ="display: none";
 	border: none;
 }
+
+.imageAvatar {
+	border-radius: 100px;
+}

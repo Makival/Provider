@@ -14,7 +14,7 @@ import com.korotkevich.provider.specification.StatementType;
 
 public class UpdateUserFullDataSqlSpecification implements SqlSpecification {
 	private final static String SQL_QUERY = "UPDATE internet_provider.users "
-			+ "SET name = ?, surname = ?, login = ?, password = SHA1(?), e_mail = ?, birth_date = ? " 
+			+ "SET name = ?, surname = ?, login = ?, password = SHA1(?), e_mail = ?, birth_date = ?, avatar_path = ? " 
 			+ "WHERE id = ?";
 	
 	private final static int PARAM_NAME_INDEX = 1;
@@ -23,7 +23,8 @@ public class UpdateUserFullDataSqlSpecification implements SqlSpecification {
 	private final static int PARAM_PASSWORD_INDEX = 4;
 	private final static int PARAM_EMAIL_INDEX = 5;
 	private final static int PARAM_BIRTH_DATE_INDEX = 6;
-	private final static int PARAM_ID_INDEX = 7;
+	private final static int PARAM_AVATAR_PATH_INDEX = 7;
+	private final static int PARAM_ID_INDEX = 8;
 	private final static String SIMPLE_DATE_FORMAT = "dd-MM-yyyy";
 	private final static String SQL_DATE_FORMAT = "yyyy-MM-dd";
 	private User user;
@@ -58,6 +59,7 @@ public class UpdateUserFullDataSqlSpecification implements SqlSpecification {
 			ps.setString(PARAM_PASSWORD_INDEX, String.valueOf(user.getPassword()));
 			ps.setString(PARAM_EMAIL_INDEX, user.getEmail());
 			ps.setString(PARAM_BIRTH_DATE_INDEX, sqlBirthDate);
+			ps.setString(PARAM_AVATAR_PATH_INDEX, user.getAvatarPath());
 			ps.setInt(PARAM_ID_INDEX, user.getId());
 		} catch (SQLException | ParseException e) {
 			throw new SpecificationException(e);

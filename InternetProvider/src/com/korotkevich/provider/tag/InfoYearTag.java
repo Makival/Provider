@@ -7,6 +7,11 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+/**
+ * Prepares tag with current year value
+ * @author Korotkevich Kirill 2018-05-25
+ *
+ */
 public class InfoYearTag extends TagSupport {
 	private static final long serialVersionUID = -3243389932472263905L;
 

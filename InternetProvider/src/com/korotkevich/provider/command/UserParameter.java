@@ -14,7 +14,8 @@ public enum UserParameter {
 	EMAIL("email"),
 	BIRTHDATE("birthDate"),
 	ROLE("role"),
-	USER("currentUser");
+	USER("currentUser"),
+	AVATAR("avatar");
 
 	private String parameterName;
 

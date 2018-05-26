@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 import com.korotkevich.provider.entity.User;
 import com.korotkevich.provider.entity.UserRole;
 
+/**
+ * Validates data of the User class object values
+ * @author Korotkevich Kirill 2018-05-25
+ *
+ */
 public class IncomingUserDataValidator {
 	private final static String REG_EX_LOGIN = "([A-Za-z]{1})([A-Za-z0-9-_]{5,50})";
 	private final static String REG_EX_PASSWORD = "[^{}#()]{3,50}";

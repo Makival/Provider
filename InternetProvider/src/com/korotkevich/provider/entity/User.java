@@ -13,6 +13,7 @@ public class User {
 	private UserStatus status;
 	private String registrationDate;
 	private String birthDate;
+	private String avatarPath;
 	
 	/**
 	 * Default constructor
@@ -119,7 +120,29 @@ public class User {
 	}
 	
 	/**
-	 * Constructor with id, login, name, surname, email, role, status, registrationDate, birthDate
+	 * Constructor with id, login, password, name, surname, email, birthDate , status, avatarPath
+	 * @param id
+	 * @param login
+	 * @param name
+	 * @param surname
+	 * @param email
+	 * @param birthDate
+	 * @param status
+	 * @param avatarPath
+	 */
+	public User(int id, String login, String name, String surname, String email, String birthDate, UserStatus status, String avatarPath) {
+		this.id = id;
+		this.login = login;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.birthDate = birthDate;
+		this.status = status;
+		this.avatarPath = avatarPath;
+	}
+	
+	/**
+	 * Constructor with id, login, name, surname, email, role, status, registrationDate, birthDate, avatarPath
 	 * @param id
 	 * @param login
 	 * @param name
@@ -141,6 +164,33 @@ public class User {
 		this.status = status;
 		this.registrationDate = registrationDate;
 		this.birthDate = birthDate;
+	}
+	
+	/**
+	 * Constructor with id, login, name, surname, email, role, status, registrationDate, birthDate, avatarPath
+	 * @param id
+	 * @param login
+	 * @param name
+	 * @param surname
+	 * @param email
+	 * @param role
+	 * @param status
+	 * @param registrationDate
+	 * @param birthDate
+	 * @param avatarPath
+	 */
+	public User(int id, String login, String name, String surname, String email, UserRole role,
+			UserStatus status, String registrationDate, String birthDate, String avatarPath) {
+		this.id = id;
+		this.login = login;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.role = role;
+		this.status = status;
+		this.registrationDate = registrationDate;
+		this.birthDate = birthDate;
+		this.avatarPath = avatarPath;
 	}
 	
 	/**
@@ -328,6 +378,22 @@ public class User {
 	 */
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+	
+	/**
+	 * Get the avatar  
+	 * @return avatar
+	 */
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+
+	/**
+	 * Set the avatar  
+	 * @param avatar
+	 */
+	public void setAvatarPath(String avatar) {
+		this.avatarPath = avatar;
 	}
 
 	@Override

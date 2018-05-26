@@ -13,7 +13,7 @@ import com.korotkevich.provider.specification.StatementType;
 
 public class FindUserByLoginPassSqlSpecification implements SqlRetrieveSpecification {
 	private final static String SQL_QUERY ="SELECT users.name, users.surname, users.login, users.id, users.role, user_statuses.status, "
-											+ "users.e_mail, DATE_FORMAT(users.registration_date, '%d-%m-%Y'), DATE_FORMAT(users.birth_date, '%d-%m-%Y') " 
+											+ "users.e_mail, DATE_FORMAT(users.registration_date, '%d-%m-%Y'), DATE_FORMAT(users.birth_date, '%d-%m-%Y'), IFNULL(avatar_path, '') " 
 			 								+ "FROM internet_provider.users "
 			 								+"LEFT JOIN internet_provider.user_statuses ON internet_provider.users.user_statuses_id = internet_provider.user_statuses.id "
 			 								+"WHERE users.login = ? AND users.password = SHA1(?)";
@@ -28,7 +28,7 @@ public class FindUserByLoginPassSqlSpecification implements SqlRetrieveSpecifica
 	private final static int EMAIL_INDEX = 7;
 	private final static int REG_DATE_INDEX = 8;
 	private final static int BIRTH_DATE_INDEX = 9;
-	
+	private final static int AVATAR_PATH_INDEX = 10;	
 	private String loginValue;
 	private String passwordValue;
 	private StatementType statementType;
@@ -69,7 +69,8 @@ public class FindUserByLoginPassSqlSpecification implements SqlRetrieveSpecifica
 			UserStatus status = UserStatus.valueOf(statusName);
 
 			user = new User(rs.getInt(ID_INDEX), rs.getString(LOGIN_INDEX), rs.getString(NAME_INDEX),
-					rs.getString(SURNAME_INDEX), rs.getString(EMAIL_INDEX), role, status, rs.getString(REG_DATE_INDEX), rs.getString(BIRTH_DATE_INDEX));
+					rs.getString(SURNAME_INDEX), rs.getString(EMAIL_INDEX), role, status, rs.getString(REG_DATE_INDEX),
+					rs.getString(BIRTH_DATE_INDEX), rs.getString(AVATAR_PATH_INDEX));
 		} catch (SQLException e) {
 			throw new SpecificationException(e);
 		}

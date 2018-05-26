@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,11 @@ import com.korotkevich.provider.controller.session.SessionPool;
 import com.korotkevich.provider.exception.ConnectionPoolException;
 import com.korotkevich.provider.pool.ConnectionPool;
 
-
-@WebServlet("/FrontController")
+@WebServlet(urlPatterns = {"/FrontController"})
+@MultipartConfig(location = ""
+        , fileSizeThreshold = 1024 * 1024
+        , maxFileSize = 1024 * 1024 * 5
+        , maxRequestSize = 1024 * 1024 * 5 * 5)
 public class FrontController extends HttpServlet {
 	private static Logger logger = LogManager.getLogger();
 	private static final long serialVersionUID = 1L;

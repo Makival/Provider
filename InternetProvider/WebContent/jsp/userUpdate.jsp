@@ -18,6 +18,7 @@
 	var="password_verification" />
 <fmt:message bundle="${loc}" key="local.passwordNew" var="password_new" />
 <fmt:message bundle="${loc}" key="local.name" var="name" />
+<fmt:message bundle="${loc}" key="local.avatar" var="avatar" />
 <fmt:message bundle="${loc}" key="local.surname" var="surname" />
 <fmt:message bundle="${loc}" key="local.email" var="email" />
 <fmt:message bundle="${loc}" key="local.birthDate" var="birth_date" />
@@ -54,7 +55,7 @@
 	<%@include file="/WEB-INF/jspf/mainNavBar.jspf"%>
 	<%@include file="/WEB-INF/jspf/footerBar.jspf"%>
 	<div class="container">
-		<form action="FrontController" method="post"
+		<form action="FrontController" method="post" enctype="multipart/form-data"
 			onsubmit="return passwordMatchCheck(password, passwordVerification, passError);">
 			<div class="form-group row">
 				<label for="login" class="col-sm-2 col-form-label">${login}</label>
@@ -132,6 +133,13 @@
 						value="${sessionScope.currentUser.birthDate}" required />
 				</div>
 			</div>
+			<div class="form-group row">
+				<label for="avatar" class="col-sm-2 col-form-label">${avatar}</label>
+				<div class="col-sm-4">
+					<input type="file" accept=".png,.jpeg" title="Search for a file to add" class="form-control" name="avatar" id="avatar"
+						value="" />
+				</div>
+			</div>
 
 			<input type="hidden" name="passError" id="passError"
 				value="${password_not_match_message}" /> <input type="hidden"
@@ -185,6 +193,9 @@
 						closeButton : true
 					});
 				});
+				
+				$('input[type=file]').bootstrapFileInput();
+				$('.file-inputs').bootstrapFileInput();
 			</script>
 		</form>
 	</div>

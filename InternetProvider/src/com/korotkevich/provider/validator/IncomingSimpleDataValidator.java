@@ -3,6 +3,11 @@ package com.korotkevich.provider.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Validates values of a simple data type
+ * @author Korotkevich Kirill 2018-05-25
+ *
+ */
 public class IncomingSimpleDataValidator {
 	private final static String REG_EX_POSITIVE_INT = "([1-9]{1})([\\d]{0,9})";
 	private final static String REG_EX_POSITIVE_DOUBLE = "([1-9]{1}[0-9]{0,3})(\\.[\\d]{1,2})?$";

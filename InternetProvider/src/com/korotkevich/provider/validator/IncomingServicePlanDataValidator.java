@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 
 import com.korotkevich.provider.command.ServicePlanParameter;
 
+/**
+ * Validates data of the Service plan class object values
+ * @author Korotkevich Kirill 2018-05-25
+ *
+ */
 public class IncomingServicePlanDataValidator {
 	private final static String REG_EX_ID = "[\\d]{1,10}";
 	private final static String REG_EX_NAME = "([A-Z]{1})([A-Za-z0-9-_\\s]{5,50})";

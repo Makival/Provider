@@ -1,11 +1,15 @@
 package com.korotkevich.provider.command.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +43,11 @@ public class UserUpdateCommand implements Command {
 	private final static String ATTR_USER_NO_UPDATE_MSG = "userWithoutUpdate";
 	private final static String ATTR_PASS_INCORRECT_MSG = "userPasswordIncorrect";
 	private final static String ATTR_PASS_NOT_MATCH_MSG = "userPasswordNotMatch";
+	private static final String UPLOAD_DIR = "/WEB-INF/avatars";
+	private static final String IMAGE_TYPE = "image/";
+	private static final String IMAGE_HEADER_NAME = "avatar";
+	private static final String EMPTY_STRING = "";
+	private static final String DELIMETER = ".";
 	private UserLogic userLogic;
 
 	public UserUpdateCommand(UserLogic userLogic) {
@@ -107,6 +116,11 @@ public class UserUpdateCommand implements Command {
 				if (isPassChanging) {
 					incomingUser.setPassword(passVerificationValue.toCharArray());
 				}
+				String avatarPath = uploadAvatar(currentUser, request);
+				if (avatarPath.isEmpty()) {
+					avatarPath = userDB.getAvatarPath();
+				}
+				incomingUser.setAvatarPath(avatarPath);
 				isUserUpdated = userLogic.updateUser(incomingUser);
 			} catch (LogicException e) {
 				logger.log(Level.ERROR, "Errors occured while updating user:" + e);
@@ -151,6 +165,7 @@ public class UserUpdateCommand implements Command {
 		String updatedSurname = updatedUser.getSurname();
 		String updatedEmail = updatedUser.getEmail();
 		String updatedBirthDate = updatedUser.getBirthDate();
+		String updatedAvatarPath = updatedUser.getAvatarPath();
 
 		if (!currenUser.getLogin().equals(updatedLogin)) {
 			currenUser.setLogin(updatedLogin);
@@ -172,6 +187,47 @@ public class UserUpdateCommand implements Command {
 			currenUser.setBirthDate(updatedBirthDate);
 		}
 
+		if (!currenUser.getAvatarPath().equals(updatedAvatarPath)) {
+			currenUser.setAvatarPath(updatedAvatarPath);
+		}
+	}
+	
+	private String uploadAvatar(User currenUser, HttpServletRequest request) {
+		String appPath = request.getServletContext().getRealPath("");
+		String savePath = appPath + File.separator + UPLOAD_DIR;
+		String avatarImageName = "";
+
+		File fileSaveDir = new File(savePath);
+		if (!fileSaveDir.exists()) {
+			fileSaveDir.mkdir();
+		}
+
+		try {
+			for (Part part : request.getParts()) {
+				String fileName = part.getSubmittedFileName();
+				if (fileName != null) {
+					fileName = new File(fileName).getName();
+					avatarImageName = formFileName(currenUser, part.getContentType());
+					String avatarImageFullPath = savePath + File.separator + avatarImageName; 
+					part.write(avatarImageFullPath);
+					logger.log(Level.INFO, "file uploaded " + avatarImageFullPath);
+				}
+			}
+		} catch (IOException | ServletException e) {
+			logger.log(Level.ERROR, "Errors occured while uploading a file:" + e);
+		}
+		return avatarImageName;
+	}
+	
+	private String formFileName(User currenUser, String contentTypeFormat) {
+		String avatarImageName = "";
+		CharSequence type = IMAGE_TYPE;
+		if (contentTypeFormat.contains(type)) {
+			String fileFormat = contentTypeFormat.replace(type, EMPTY_STRING);
+			avatarImageName = IMAGE_HEADER_NAME + currenUser.getId() + DELIMETER + fileFormat;
+		}
+
+		return avatarImageName;
 	}
 	
 }

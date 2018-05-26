@@ -43,7 +43,7 @@
 			<div class="form-group row">
 				<label for="password" class="col-sm-1 col-form-label">${password}</label>
 				<div class="col-sm-4">
-					<input type="password" pattern=".{3,50}"
+					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control" id="password"
 						name="password" value="" required />

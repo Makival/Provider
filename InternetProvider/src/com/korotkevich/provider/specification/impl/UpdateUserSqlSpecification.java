@@ -14,7 +14,7 @@ import com.korotkevich.provider.specification.StatementType;
 
 public class UpdateUserSqlSpecification implements SqlSpecification {
 	private final static String SQL_QUERY = "UPDATE internet_provider.users "
-			+ "SET name = ?, surname = ?, login = ?, e_mail = ?, birth_date = ? " 
+			+ "SET name = ?, surname = ?, login = ?, e_mail = ?, birth_date = ?, avatar_path = ? " 
 			+ "WHERE id = ?";
 	
 	private final static int PARAM_NAME_INDEX = 1;
@@ -22,7 +22,8 @@ public class UpdateUserSqlSpecification implements SqlSpecification {
 	private final static int PARAM_LOGIN_INDEX = 3;
 	private final static int PARAM_EMAIL_INDEX = 4;
 	private final static int PARAM_BIRTH_DATE_INDEX = 5;
-	private final static int PARAM_ID_INDEX = 6;
+	private final static int PARAM_AVATAR_PATH_INDEX = 6;
+	private final static int PARAM_ID_INDEX = 7;
 	private final static String SIMPLE_DATE_FORMAT = "dd-MM-yyyy";
 	private final static String SQL_DATE_FORMAT = "yyyy-MM-dd";
 	private User user;
@@ -56,6 +57,7 @@ public class UpdateUserSqlSpecification implements SqlSpecification {
 			ps.setString(PARAM_LOGIN_INDEX, user.getLogin());
 			ps.setString(PARAM_EMAIL_INDEX, user.getEmail());
 			ps.setString(PARAM_BIRTH_DATE_INDEX, sqlBirthDate);
+			ps.setString(PARAM_AVATAR_PATH_INDEX, user.getAvatarPath());
 			ps.setInt(PARAM_ID_INDEX, user.getId());
 		} catch (SQLException | ParseException e) {
 			throw new SpecificationException(e);

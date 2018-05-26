@@ -5,6 +5,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Validates data of the Promo class object values
+ * @author Korotkevich Kirill 2018-05-25
+ *
+ */
 public class IncomingPromoDataValidator {
 	private final static String PARAM_ID = "promoId";
 	private final static String PARAM_NAME = "promoName";
