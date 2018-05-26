@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -49,6 +48,8 @@
 	var="password_not_match_message" />
 <fmt:message bundle="${loc}" key="local.passwordIncorrectMessage"
 	var="user_password_incorrect_message" />
+<fmt:message bundle="${loc}" key="local.languageDate"
+	var="language_date" />
 <title>User update</title>
 </head>
 <body>
@@ -60,7 +61,7 @@
 			<div class="form-group row">
 				<label for="login" class="col-sm-2 col-form-label">${login}</label>
 				<div class="col-sm-4">
-					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{5,50})"
+					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{4,50})"
 						oninvalid="this.setCustomValidity('${login_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control" name="login"
 						id="login" value="${sessionScope.currentUser.login}" required />
@@ -130,7 +131,7 @@
 						oninvalid="this.setCustomValidity('${date_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control"
 						id="datepicker" name="birthDate"
-						value="${sessionScope.currentUser.birthDate}" required />
+						value="${sessionScope.currentUser.birthDate}" required readonly/>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -184,7 +185,7 @@
 			<script>
 				$(function() {
 					$('#datepicker').fdatepicker({
-						language : 'ru',
+						language : '${language_date}',
 						format : 'dd-mm-yyyy',
 						disableDblClickSelection : true,
 						leftArrow : '<',

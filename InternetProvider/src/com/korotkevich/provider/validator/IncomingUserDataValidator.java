@@ -13,7 +13,7 @@ import com.korotkevich.provider.entity.UserRole;
  *
  */
 public class IncomingUserDataValidator {
-	private final static String REG_EX_LOGIN = "([A-Za-z]{1})([A-Za-z0-9-_]{5,50})";
+	private final static String REG_EX_LOGIN = "([A-Za-z]{1})([A-Za-z0-9-_]{4,50})";
 	private final static String REG_EX_PASSWORD = "[^{}#()]{3,50}";
 	private final static String REG_EX_NAME = "([A-Za-z]{2,20})";
 	private final static String REG_EX_SURNAME = "([A-Za-z]{2,20})";

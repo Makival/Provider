@@ -34,7 +34,7 @@
 			<div class="form-group row">
 				<label for="login" class="col-sm-1 col-form-label">${login}</label>
 				<div class="col-sm-4">
-					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{5,50})"
+					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{4,50})"
 						oninvalid="this.setCustomValidity('${login_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control" id="login"
 						name="login" value="" required />

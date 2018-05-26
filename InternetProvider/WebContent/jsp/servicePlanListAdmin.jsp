@@ -122,6 +122,27 @@
 				value="${find_service_plans}" /><br />
 		</form>
 
+		<c:if test="${requestScope.spCreationSuccess eq 'TRUE'}">
+			<p>${sp_creation_success_message}</p>
+		</c:if>
+		<c:if test="${requestScope.servicePlanUpdateSuccess eq 'TRUE'}">
+			<p>${sp_update_success_message}</p>
+		</c:if>
+		<c:if test="${requestScope.servicePlanWithoutUpdate eq 'TRUE'}">
+			<p>${sp_wasnt_updated_message}</p>
+		</c:if>
+		<c:if test="${requestScope.servicePlanRemoveSuccess eq 'TRUE'}">
+			<p>${sp_remove_success_message}</p>
+		</c:if>
+		<c:if test="${requestScope.promoCreationSuccess eq 'TRUE'}">
+			<p>${promo_creation_success_message}</p>
+		</c:if>
+		<c:if test="${requestScope.servicePlanIsUnderPromo eq 'TRUE'}">
+			<p>${sp_under_promo_message}</p>
+		</c:if>
+		<c:if test="${requestScope.promoRemoveSuccess eq 'TRUE'}">
+			<p>${promo_remove_success_message}</p>
+		</c:if>
 		<h3>${service_plan_list}</h3>
 		<table class="table table-bordered table-striped" id="spTable">
 			<tr>
@@ -322,7 +343,7 @@
 									<input type="text" pattern="([1-9]{1}[\d]{0,1})|0"
 										oninvalid="this.setCustomValidity('${access_discount_fill_message}')"
 										oninput="setCustomValidity('')" class="form-control"
-										name="accessDiscount" id="accessDiscount" value="0" required />
+										name="accessDiscount" id="accessDiscount" value="" required />
 								</div>
 							</div>
 							<div class="form-group row">
@@ -381,28 +402,6 @@
 					<p>${access_discount_fill_message}</p>
 				</c:if>
 			</c:forEach>
-		</c:if>
-
-		<c:if test="${requestScope.spCreationSuccess eq 'TRUE'}">
-			<p>${sp_creation_success_message}</p>
-		</c:if>
-		<c:if test="${requestScope.servicePlanUpdateSuccess eq 'TRUE'}">
-			<p>${sp_update_success_message}</p>
-		</c:if>
-		<c:if test="${requestScope.servicePlanWithoutUpdate eq 'TRUE'}">
-			<p>${sp_wasnt_updated_message}</p>
-		</c:if>
-		<c:if test="${requestScope.servicePlanRemoveSuccess eq 'TRUE'}">
-			<p>${sp_remove_success_message}</p>
-		</c:if>
-		<c:if test="${requestScope.promoCreationSuccess eq 'TRUE'}">
-			<p>${promo_creation_success_message}</p>
-		</c:if>
-		<c:if test="${requestScope.servicePlanIsUnderPromo eq 'TRUE'}">
-			<p>${sp_under_promo_message}</p>
-		</c:if>
-		<c:if test="${requestScope.promoRemoveSuccess eq 'TRUE'}">
-			<p>${promo_remove_success_message}</p>
 		</c:if>
 
 		<script>

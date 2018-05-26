@@ -81,6 +81,12 @@
 		<c:if test="${requestScope.userUpdateSuccess eq 'TRUE'}">
 			<p>${user_update_success_message}</p>
 		</c:if>
+		<c:if test="${requestScope.userCreationSuccess eq 'TRUE'}">
+			<p>${user_creation_success_message}</p>
+		</c:if>
+		<c:if test="${requestScope.userBlockSuccess eq 'TRUE'}">
+			<p>${user_block_success_message}</p>
+		</c:if>
 
 		<c:if test="${requestScope.userListVisibility eq 'TRUE'}">
 			<h3>${user_list}</h3>
@@ -183,14 +189,6 @@
 					type="submit" class="btn btn-outline-secondary btn-sm"
 					value="${reg_button}" /><br />
 			</form>
-
-
-			<c:if test="${requestScope.userCreationSuccess eq 'TRUE'}">
-				<p>${user_creation_success_message}</p>
-			</c:if>
-			<c:if test="${requestScope.userBlockSuccess eq 'TRUE'}">
-				<p>${user_block_success_message}</p>
-			</c:if>
 
 		</c:if>
 	</div>

@@ -16,7 +16,7 @@ import javax.servlet.annotation.WebInitParam;
  * @author Korotkevich Kirill 2018-05-22
  *
  */
-@WebFilter(urlPatterns = { "/FrontController" }, initParams = { @WebInitParam(name = "REQUEST_ENCODING", value = "UTF-8") })
+@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "REQUEST_ENCODING", value = "UTF-8") })
 public class WebCharsetFilter implements Filter {
 	private String encoding;
 
@@ -33,10 +33,12 @@ public class WebCharsetFilter implements Filter {
 		}
 
 		response.setCharacterEncoding(encoding);
-
 		next.doFilter(request, response);
 	}
 
 	public void destroy() {
 	}
 }
+
+
+

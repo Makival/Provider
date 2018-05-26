@@ -36,6 +36,8 @@
 	var="date_fill_message" />
 <fmt:message bundle="${loc}" key="local.userFoundMesasge"
 	var="user_found_message" />
+<fmt:message bundle="${loc}" key="local.languageDate"
+	var="language_date" />
 <title>Registration</title>
 </head>
 <body>
@@ -50,7 +52,7 @@
 			<div class="form-group row">
 				<label for="login" class="col-sm-1 col-form-label">${login}</label>
 				<div class="col-sm-4">
-					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{5,50})"
+					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{4,50})"
 						oninvalid="this.setCustomValidity('${login_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control" name="login"
 						id="login" value="" required />
@@ -96,11 +98,11 @@
 			<div class="form-group row">
 				<label for="datepicker" class="col-sm-1 col-form-label">${birth_date}</label>
 				<div class="col-sm-4">
-					<input type="text"
+					<input type="text" class="readonly"
 						pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](17|18|19|20)\d\d$"
 						oninvalid="this.setCustomValidity('${date_fill_message}')"
 						oninput="setCustomValidity('')" class="form-control"
-						id="datepicker" name="birthDate" value="" required />
+						id="datepicker" name="birthDate" value="" required/>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -147,7 +149,7 @@
 			<script>
 				$(function() {
 					$('#datepicker').fdatepicker({
-						language : 'ru',
+						language : '${language_date}',
 						format : 'dd-mm-yyyy',
 						disableDblClickSelection : true,
 						leftArrow : '<',
@@ -156,6 +158,10 @@
 						closeButton : true
 					});
 				});
+				
+				 $(".readonly").keydown(function(e){
+				        e.preventDefault();
+				    });
 			</script>
 		</form>
 	</div>

@@ -43,7 +43,7 @@ public class UserUpdateCommand implements Command {
 	private final static String ATTR_USER_NO_UPDATE_MSG = "userWithoutUpdate";
 	private final static String ATTR_PASS_INCORRECT_MSG = "userPasswordIncorrect";
 	private final static String ATTR_PASS_NOT_MATCH_MSG = "userPasswordNotMatch";
-	private static final String UPLOAD_DIR = "/WEB-INF/avatars";
+	private static final String UPLOAD_DIR = "/avatars";
 	private static final String IMAGE_TYPE = "image/";
 	private static final String IMAGE_HEADER_NAME = "avatar";
 	private static final String EMPTY_STRING = "";
@@ -70,6 +70,8 @@ public class UserUpdateCommand implements Command {
 		Router router = new Router(JspAddress.USER_UPDATE.getPath());
 		List<String> validationErrorList = new ArrayList<>();
 
+		logger.log(Level.INFO, "name value: " + nameValue);
+		
 		User incomingUser = new User(currentUser.getId(), loginValue, passCurrentValue.toCharArray(), nameValue,
 				surnameValue, emailValue, birthDateValue);
 
@@ -187,7 +189,7 @@ public class UserUpdateCommand implements Command {
 			currenUser.setBirthDate(updatedBirthDate);
 		}
 
-		if (!currenUser.getAvatarPath().equals(updatedAvatarPath)) {
+		if (updatedAvatarPath != null && !currenUser.getAvatarPath().equals(updatedAvatarPath)) {
 			currenUser.setAvatarPath(updatedAvatarPath);
 		}
 	}
@@ -205,12 +207,14 @@ public class UserUpdateCommand implements Command {
 		try {
 			for (Part part : request.getParts()) {
 				String fileName = part.getSubmittedFileName();
-				if (fileName != null) {
+				if (fileName != null && !fileName.isEmpty()) {
 					fileName = new File(fileName).getName();
 					avatarImageName = formFileName(currenUser, part.getContentType());
-					String avatarImageFullPath = savePath + File.separator + avatarImageName; 
-					part.write(avatarImageFullPath);
-					logger.log(Level.INFO, "file uploaded " + avatarImageFullPath);
+					if (!avatarImageName.isEmpty()) {
+						String avatarImageFullPath = savePath + File.separator + avatarImageName; 
+						part.write(avatarImageFullPath);
+						logger.log(Level.INFO, "file uploaded " + avatarImageFullPath);	
+					}	
 				}
 			}
 		} catch (IOException | ServletException e) {
