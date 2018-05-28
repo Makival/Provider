@@ -1,7 +1,6 @@
 package com.korotkevich.provider.specification;
 
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import com.korotkevich.provider.exception.SpecificationException;
 
@@ -21,7 +20,7 @@ public interface SqlSpecification extends Specification {
 	/**
 	 * Adds parameters to prepared statement
 	 * @param ps prepared statement for fill the parameters in
-	 * @throws SQLException if problems occured while filling the parameters in
+	 * @throws SpecificationException if problems occured while filling the parameters in
 	 */
 	public void fillInStatementParameters(PreparedStatement ps) throws SpecificationException;
 	

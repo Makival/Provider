@@ -9,7 +9,7 @@ import com.korotkevich.provider.specification.Specification;
  * Declaration of layer that interacts with data storage
  * @author Korotkevich Kirill 2018-05-10
  *
- * @param <T>
+ * @param <T> incoming parameter
  */
 public interface Repository<T> {
 	/**

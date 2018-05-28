@@ -21,7 +21,7 @@ public class Router {
 	
 	/**
 	 * Basic constructor
-	 * @param jspPath
+	 * @param jspPath stored path to jsp file
 	 */
 	public Router(String jspPath){
 		this.jspPath = jspPath;
@@ -30,8 +30,8 @@ public class Router {
 	
 	/**
 	 * Constructor with jspPath and route  
-	 * @param jspPath
-	 * @param route
+	 * @param jspPath stored path to jsp file
+	 * @param route forward or redirect
 	 */
 	public Router(String jspPath, RouteType route){
 		this.jspPath = jspPath;
@@ -48,7 +48,7 @@ public class Router {
 
 	/**
 	 * Sets jspPath 
-	 * @param jspPath
+	 * @param jspPath stored path to jsp file
 	 */
 	public void setJspPath(String jspPath) {
 		this.jspPath = jspPath;
@@ -64,7 +64,7 @@ public class Router {
 
 	/**
 	 * Sets route
-	 * @param route
+	 * @param route forward or redirect
 	 */
 	public void setRoute(RouteType route) {
 		this.route = route;

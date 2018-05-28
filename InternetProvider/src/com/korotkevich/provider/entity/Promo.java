@@ -30,7 +30,7 @@ public class Promo {
 	
 	/**
 	 * Constructor with id, name
-	 * @param promoId
+	 * @param id
 	 * @param name
 	 */
 	public Promo(int id, String name){
