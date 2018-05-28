@@ -26,7 +26,7 @@ import com.korotkevich.provider.specification.impl.UpdateUserServicePlanSqlSpeci
 public class ServicePlanLogic {
 	
 	/**
-	 * 
+	 * Searches service plan by user id
 	 * @param user incoming user object
 	 * @return discovered service plan object
 	 * @throws LogicException if problems occured while searching service plan
@@ -53,7 +53,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Searches service plan by id
 	 * @param servicePlan incoming service plan object
 	 * @return discovered service plan object
 	 * @throws LogicException if problems occured while searching service plan by id
@@ -80,7 +80,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Searches service plans by criteria
 	 * @param parametersMap incoming pagination parameters map
 	 * @param servicePlanCriteria incoming search criteria object
 	 * @return list of discovered service plans
@@ -102,7 +102,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Replase users service plan
 	 * @param user incoming user object
 	 * @param servicePlan incoming service plan object
 	 * @return result of the operation (boolean)
@@ -125,7 +125,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Adds new service plan
 	 * @param servicePlan incoming service plan object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException if problems occured while adding service plan
@@ -144,7 +144,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Updates service plan
 	 * @param servicePlan incoming service plan object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException if problems occured while updating service plan
@@ -165,7 +165,7 @@ public class ServicePlanLogic {
 	}
 	
 	/**
-	 * 
+	 * Removes service plan
 	 * @param servicePlan incoming service plan object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException if problems occured while changing service plan

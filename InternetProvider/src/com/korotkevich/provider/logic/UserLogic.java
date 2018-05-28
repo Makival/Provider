@@ -25,7 +25,7 @@ import com.korotkevich.provider.specification.impl.UpdateUserStatusSqlSpecificat
 public class UserLogic {
 
 	/**
-	 * 
+	 * Searches user by login and password
 	 * @param user incoming user object
 	 * @return discovered user object
 	 * @throws LogicException if problems occured while searching user
@@ -53,7 +53,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Searches user by login
 	 * @param user incoming user object
 	 * @return discovered user object
 	 * @throws LogicException if problems occured while searching user
@@ -80,7 +80,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Searches user by id
 	 * @param user incoming user object
 	 * @return discovered user object
 	 * @throws LogicException if problems occured while searching user
@@ -106,6 +106,12 @@ public class UserLogic {
 
 	}
 	
+	/**
+	 * Searches user by id and password
+	 * @param user incoming User object
+	 * @return User object filled with data from data base
+	 * @throws LogicException if problems occured while searching user
+	 */
 	public User checkUserByIdPassword(User user)
 			throws LogicException {
 		User currentUser = null;
@@ -129,7 +135,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Finds all users 
 	 * @param parametersMap incoming pagination parameters map
 	 * @return discovered list of users
 	 * @throws LogicException if problems occured while searching users
@@ -150,7 +156,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Adds new user
 	 * @param user incoming user object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException if problems occured while adding user
@@ -170,7 +176,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Updates user data
 	 * @param user incoming user object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException  if problems occured while updating user
@@ -192,7 +198,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Updates user status
 	 * @param user incoming user object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException  if problems occured while updating user
@@ -213,7 +219,7 @@ public class UserLogic {
 	}
 	
 	/**
-	 * 
+	 * Removes user
 	 * @param user incoming user object
 	 * @return result of the operation (boolean)
 	 * @throws LogicException if problems occured while updating user

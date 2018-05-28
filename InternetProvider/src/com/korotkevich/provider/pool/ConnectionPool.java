@@ -19,6 +19,11 @@ import org.apache.logging.log4j.Logger;
 import com.korotkevich.provider.exception.ConnectionPoolException;
 import com.korotkevich.provider.pool.propertyloader.PoolPropertyLoader;
 
+/**
+ * Class stores and provides connections to data base
+ * @author Korotkevich Kirill 2018-05-28
+ *
+ */
 public class ConnectionPool {
 	private static Logger logger = LogManager.getLogger();
 	private static ConnectionPool instance;
@@ -34,6 +39,10 @@ public class ConnectionPool {
 	
 	private Properties poolProperties;
 
+	/**
+	 * Basic constructor
+	 * @throws ConnectionPoolException
+	 */
 	private ConnectionPool() throws ConnectionPoolException {
 		PoolPropertyLoader propertiesLoader = new PoolPropertyLoader();
 		poolProperties = propertiesLoader.fillInProperties();
@@ -58,6 +67,11 @@ public class ConnectionPool {
 
 	}
 
+	/**
+	 * Gets instance of the pool or creates it if there are no instance
+	 * @return ConnectionPool instance
+	 * @throws ConnectionPoolException
+	 */
 	public static ConnectionPool getInstance() throws ConnectionPoolException {
 		if (!isPoolInitialized.get()) {
 			lock.lock();
@@ -76,6 +90,11 @@ public class ConnectionPool {
 	}
 		
 
+	/**
+	 * Gets free connection from the poll
+	 * @return WrapperConnection
+	 * @throws ConnectionPoolException
+	 */
 	public WrapperConnection getConnection() throws ConnectionPoolException{
 		WrapperConnection connection = null;		
 		int timeWaitValue = Integer.parseInt(poolProperties.getProperty(TIME_WAIT));
@@ -90,12 +109,19 @@ public class ConnectionPool {
 	}
 		
 	
+	/**
+	 * Returns connection to the pool
+	 * @param wrappConnection
+	 */
 	public void returnConnection(WrapperConnection wrappConnection) {
 		if (wrappConnection != null) {
 			connections.offer(wrappConnection);
 		}
 	}
 
+	/**
+	 * Prepares destruction of the poll(closes connections, unloads drivers)
+	 */
 	public void destroy() {
 		int connQuantity = Integer.parseInt(poolProperties.getProperty(CONNECTIONS_MAX_PROPERTY));
 		int connClosedQuantity = 0;

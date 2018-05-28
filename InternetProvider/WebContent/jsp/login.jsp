@@ -61,6 +61,12 @@
 		<c:if test="${requestScope.userProfileBlocked eq 'TRUE'}">
 			<P>${user_blocked_message}</P>
 		</c:if>
+		<c:if test="${requestScope.loginNotValid eq 'TRUE'}">
+			<P>${login_fill_message}</P>
+		</c:if>
+		<c:if test="${requestScope.passNotValid eq 'TRUE'}">
+			<P>${pass_fill_message}</P>
+		</c:if>
 
 		<c:if test="${requestScope.userAlreadyLogged eq 'TRUE'}">
 			<P>${user_already_logged_message}</P>
