@@ -59,7 +59,7 @@
 		<form action="FrontController" method="post" enctype="multipart/form-data"
 			onsubmit="return passwordMatchCheck(password, passwordVerification, passError);">
 			<div class="form-group row">
-				<label for="login" class="col-sm-2 col-form-label">${login}</label>
+				<label for="login" class="col-sm-3 col-form-label">${login}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{4,50})"
 						oninvalid="this.setCustomValidity('${login_fill_message}')"
@@ -68,7 +68,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="currentPassword" class="col-sm-2 col-form-label">${password_old}</label>
+				<label for="currentPassword" class="col-sm-3 col-form-label">${password_old}</label>
 				<div class="col-sm-4">
 					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="password" class="col-sm-2 col-form-label">${password_new}</label>
+				<label for="password" class="col-sm-3 col-form-label">${password_new}</label>
 				<div class="col-sm-4">
 					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="passwordVerification" class="col-sm-2 col-form-label">${password_verification}</label>
+				<label for="passwordVerification" class="col-sm-3 col-form-label">${password_verification}</label>
 				<div class="col-sm-4">
 					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label">${name}</label>
+				<label for="name" class="col-sm-3 col-form-label">${name}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Za-z]{2,20})"
 						oninvalid="this.setCustomValidity('${name_fill_message}')"
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="surname" class="col-sm-2 col-form-label">${surname}</label>
+				<label for="surname" class="col-sm-3 col-form-label">${surname}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Za-z]{2,20})"
 						oninvalid="this.setCustomValidity('${surname_fill_message}')"
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-sm-2 col-form-label">${email}</label>
+				<label for="email" class="col-sm-3 col-form-label">${email}</label>
 				<div class="col-sm-4">
 					<input type="text"
 						pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"
@@ -124,7 +124,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="datepicker" class="col-sm-2 col-form-label">${birth_date}</label>
+				<label for="datepicker" class="col-sm-3 col-form-label">${birth_date}</label>
 				<div class="col-sm-4">
 					<input type="text"
 						pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](17|18|19|20)\d\d$"
@@ -135,7 +135,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="avatar" class="col-sm-2 col-form-label">${avatar}</label>
+				<label for="avatar" class="col-sm-3 col-form-label">${avatar}</label>
 				<div class="col-sm-4">
 					<input type="file" accept=".png,.jpeg" title="Search for a file to add" class="form-control" name="avatar" id="avatar"
 						value="" />

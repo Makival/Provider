@@ -340,7 +340,7 @@
 							<div class="form-group row">
 								<label for="accessDiscount" class="col-sm-4 col-form-label">${access_discount}</label>
 								<div class="col-sm-4">
-									<input type="text" pattern="([1-9]{1}[\d]{0,1})|0"
+									<input type="text" pattern="([1-9]{1}[\d]{0,1})"
 										oninvalid="this.setCustomValidity('${access_discount_fill_message}')"
 										oninput="setCustomValidity('')" class="form-control"
 										name="accessDiscount" id="accessDiscount" value="" required />

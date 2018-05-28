@@ -47,10 +47,9 @@
 		<c:if test="${requestScope.userFound eq 'TRUE'}">
 			<P>${user_found_message}</P>
 		</c:if>
-
 		<form action="FrontController" method="post">
 			<div class="form-group row">
-				<label for="login" class="col-sm-1 col-form-label">${login}</label>
+				<label for="login" class="col-sm-3 col-form-label">${login}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Z]{1})([A-Za-z0-9-_]{4,50})"
 						oninvalid="this.setCustomValidity('${login_fill_message}')"
@@ -59,7 +58,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="password" class="col-sm-1 col-form-label">${password}</label>
+				<label for="password" class="col-sm-3 col-form-label">${password}</label>
 				<div class="col-sm-4">
 					<input type="password" pattern="[^{}#()]{3,50}"
 						oninvalid="this.setCustomValidity('${pass_fill_message}')"
@@ -68,7 +67,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="name" class="col-sm-1 col-form-label">${name}</label>
+				<label for="name" class="col-sm-3 col-form-label">${name}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Za-z]{2,20})"
 						oninvalid="this.setCustomValidity('${name_fill_message}')"
@@ -77,7 +76,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="surname" class="col-sm-1 col-form-label">${surname}</label>
+				<label for="surname" class="col-sm-3 col-form-label">${surname}</label>
 				<div class="col-sm-4">
 					<input type="text" pattern="([A-Za-z]{2,20})"
 						oninvalid="this.setCustomValidity('${surname_fill_message}')"
@@ -86,7 +85,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-sm-1 col-form-label">${email}</label>
+				<label for="email" class="col-sm-3 col-form-label">${email}</label>
 				<div class="col-sm-4">
 					<input type="text"
 						pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"
@@ -96,7 +95,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="datepicker" class="col-sm-1 col-form-label">${birth_date}</label>
+				<label for="datepicker" class="col-sm-3 col-form-label">${birth_date}</label>
 				<div class="col-sm-4">
 					<input type="text" class="readonly"
 						pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](17|18|19|20)\d\d$"
@@ -106,7 +105,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="role" class="col-sm-1 col-form-label">${role}</label>
+				<label for="role" class="col-sm-3 col-form-label">${role}</label>
 				<div class="col-sm-4">
 					<select name="role" id="role" required>
 						<c:forEach var="role_name" items="${requestScope.roleList}">
